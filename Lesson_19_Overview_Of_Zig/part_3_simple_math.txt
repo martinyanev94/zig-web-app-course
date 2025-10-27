@@ -1,0 +1,13 @@
+// math.zig
+const std = @import("std");
+
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+const std = @import("std");
+const math = @import("math.zig");
+
+pub fn main() void {
+    const result = math.add(3, 4);
+    std.debug.print("3 + 4 = {}\n", .{result});
+}
