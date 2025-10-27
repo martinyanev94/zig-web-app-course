@@ -1,0 +1,21 @@
+const std = @import("std");
+
+fn worker(id: usize) void {
+    std.debug.print("Worker {} is running\n", .{id});
+}
+
+pub fn main() void {
+    const num_workers = 3;
+    var workers: [num_workers]std.Thread = undefined;
+
+    for (workers) |*worker, i| {
+        worker = std.Thread.spawn(worker, i) catch |err| {
+            std.debug.print("Failed to spawn thread: {}\n", .{err});
+            return;
+        };
+    }
+
+    for (workers) |worker| {
+        worker.join();
+    }
+}
