@@ -1,0 +1,6 @@
+const std = @import("std");
+
+pub fn main() void {
+    const greeting = "Welcome to Zig!";
+    std.debug.print("{}\n", .{greeting});
+}
