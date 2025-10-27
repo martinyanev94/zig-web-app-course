@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn sum(comptime T: type, a: T, b: T) T {
+    return a + b;
+}
+
+pub fn main() void {
+    const result = sum(u32, 5, 10);
+    std.debug.print("The sum is: {}\n", .{result});
+}
