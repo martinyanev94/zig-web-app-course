@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.page_allocator;
+    const size: usize = 10;
+    
+    const array_ptr = try allocator.alloc(u32, size);
+    defer allocator.free(array_ptr); // Ensures memory is freed
+
+    for (array_ptr) |*element, index| {
+        element.* = index * index; // Fill with the square of the index
+    }
+
+    for (array_ptr) |*element| {
+        std.debug.print("{}\n", .{element.*}); // Print the squared values
+    }
+}
