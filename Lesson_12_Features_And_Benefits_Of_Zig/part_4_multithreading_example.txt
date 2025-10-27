@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn process_data(data: u32) void {
+    std.debug.print("Processing data: {}\n", .{data});
+}
+
+pub fn main() !void {
+    const thread1 = try std.Thread.spawn(process_data, 1);
+    const thread2 = try std.Thread.spawn(process_data, 2);
+    
+    try thread1.wait();
+    try thread2.wait();
+}
