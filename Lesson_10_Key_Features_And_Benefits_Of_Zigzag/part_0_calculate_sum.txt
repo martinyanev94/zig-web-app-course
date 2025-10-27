@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    var sum: i32 = 0;
+    for (i32(1)..=100) |i| {
+        sum += i;
+    }
+    std.debug.print("Sum from 1 to 100 is: {}\n", .{sum});
+}
