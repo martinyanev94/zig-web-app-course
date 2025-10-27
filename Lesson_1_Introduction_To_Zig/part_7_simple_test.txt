@@ -1,0 +1,4 @@
+test "simple test" {
+    const result = safe_divide(10, 2);
+    try std.testing.expect(result == 5);
+}
