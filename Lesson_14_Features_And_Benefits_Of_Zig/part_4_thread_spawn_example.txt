@@ -1,0 +1,16 @@
+const std = @import("std");
+
+pub fn main() void {
+    var tasks: [5]std.Thread = undefined;
+    
+    for (i in 0..5) {
+        tasks[i] = std.Thread.spawn(async {
+            std.debug.print("Task {} is running!\n", .{i});
+            return;
+        });
+    }
+    
+    for (i in 0..5) {
+        tasks[i].join();
+    }
+}
