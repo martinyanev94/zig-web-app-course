@@ -1,0 +1,16 @@
+const std = @import("std");
+
+fn openFile(path: []const u8) !*std.fs.File {
+    const file = try std.fs.cwd().openFile(path, .{.read = true});
+    return file;
+}
+
+pub fn main() void {
+    const filePath = "data.txt";
+    const file = openFile(filePath) catch |err| {
+        std.debug.print("Error opening file '{}': {}\n", .{filePath, err});
+        return;
+    };
+
+    std.debug.print("File opened successfully: {}\n", .{file});
+}
