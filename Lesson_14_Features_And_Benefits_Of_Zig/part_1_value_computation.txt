@@ -1,0 +1,16 @@
+const std = @import("std");
+
+const MyError = error{ValueTooHigh};
+
+fn compute(value: u32) !u32 {
+    if (value > 10) return MyError.ValueTooHigh;
+    return value * 2;
+}
+
+pub fn main() void {
+    const result = compute(15);
+    switch (result) {
+        15 => std.debug.print("Result: {}\n", .{result}),
+        error.MyError.ValueTooHigh => std.debug.print("Error: Value too high!\n", .{}),
+    }
+}
