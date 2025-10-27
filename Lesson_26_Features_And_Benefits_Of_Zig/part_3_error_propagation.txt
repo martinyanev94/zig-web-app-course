@@ -1,0 +1,12 @@
+const std = @import("std");
+
+const MyError = error{ MyError };
+
+fn mayFail() !void {
+    return MyError; // Return an error value
+}
+
+pub fn main() !void {
+    try mayFail(); // Propagate the error
+    std.debug.print("This line will not execute if there's an error.\n", .{});
+}
