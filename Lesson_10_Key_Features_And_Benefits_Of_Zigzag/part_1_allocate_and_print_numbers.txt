@@ -1,0 +1,15 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    const numbers = try allocator.alloc(i32, 5);
+    defer allocator.free(numbers);
+
+    for (i32(0)..5) |i| {
+        numbers[i] = i * 2;
+    }
+
+    for (i32(0)..5) |i| {
+        try std.debug.print("Number at index {}: {}\n", .{i, numbers[i]});
+    }
+}
