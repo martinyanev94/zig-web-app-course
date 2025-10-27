@@ -1,0 +1,9 @@
+const Builder = std.build.Builder;
+const Exe = Builder.Executable;
+
+pub fn build(b: *Builder) void {
+    const exe = b.addExecutable("myapp", "src/main.zig");
+    exe.setTarget(os.windows);
+    exe.setBuildMode(BuildMode.ReleaseFast);
+    b.installExecutable(exe);
+}
