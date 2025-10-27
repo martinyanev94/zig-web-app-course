@@ -1,0 +1,7 @@
+const std = @import("std");
+const my_lib = @import("my_lib");
+
+pub fn main() void {
+    my_lib.perform_task();
+    std.debug.print("Task complete.\n", .{});
+}
