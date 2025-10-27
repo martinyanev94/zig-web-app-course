@@ -1,0 +1,10 @@
+export fn square(x: f64) f64 {
+    return x * x;
+}
+const std = @import("std");
+const math = @import("math.zig");
+
+pub fn main() void {
+    const result = math.square(5.0);
+    std.debug.print("The square of 5 is: {}\n", .{result});
+}
