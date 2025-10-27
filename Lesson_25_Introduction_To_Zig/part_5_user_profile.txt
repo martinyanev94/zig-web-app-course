@@ -1,0 +1,15 @@
+const std = @import("std");
+
+const UserProfile = struct {
+    name: []const u8,
+    age: u32,
+};
+
+pub fn main() void {
+    const user = UserProfile{
+        .name = "Alice",
+        .age = 30,
+    };
+    
+    std.debug.print("User: {}, Age: {}\n", .{user.name, user.age});
+}
