@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn readFile(path: []const u8) !void {
+    const file = try std.fs.cwd().openFile(path, .{});
+    defer file.close();
+    
+    const content = try file.readToEndAlloc(std.heap.page_allocator);
+    std.debug.print("File content:\n{}\n", .{content});
+}
+
+pub fn main() void {
+    try readFile("example.txt");
+}
