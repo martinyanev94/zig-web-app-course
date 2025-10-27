@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    const mem = try allocator.alloc(u8, 10); // Allocates an array of 10 bytes
+    defer allocator.free(mem); // Free memory when done
+
+    for (mem) |*byte, index| {
+        byte.* = index; // Initialize the array
+    }
+
+    std.debug.print("Allocated memory: {}\n", .{mem});
+}
