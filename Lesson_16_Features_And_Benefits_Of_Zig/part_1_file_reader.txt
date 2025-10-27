@@ -1,0 +1,16 @@
+const std = @import("std");
+
+pub fn main() void {
+    const file = std.fs.openFile("example.txt", .{ .read = true }) catch |err| {
+        std.debug.print("Failed to open file: {}\n", .{err});
+        return;
+    };
+
+    const contents = file.readToEndAlloc(std.heap.page_allocator) catch |err| {
+        std.debug.print("Failed to read file: {}\n", .{err});
+        return;
+    };
+
+    std.debug.print("File contents: {}\n", .{contents});
+    std.heap.page_allocator.free(contents);
+}
