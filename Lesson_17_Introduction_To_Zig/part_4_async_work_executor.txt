@@ -1,0 +1,14 @@
+const std = @import("std");
+
+async fn do_work() void {
+    std.debug.print("Starting work...\n", .{});
+    // Simulate time-consuming work
+    std.time.sleep(1 * std.time.ns_per_sec);
+    std.debug.print("Work done!\n", .{});
+}
+
+pub fn main() void {
+    const work_handle = do_work();
+    std.debug.print("Doing other tasks while waiting for work...\n", .{});
+    work_handle.await();
+}
