@@ -1,0 +1,22 @@
+const std = @import("std");
+
+fn asyncTask(comptime id: usize) void {
+    std.debug.print("Task {} is running\n", .{id});
+}
+
+pub fn main() void {
+    var tasks: [5]std.Thread = undefined;
+    
+    for (tasks) |*task, index| {
+        const thread = std.Thread.spawn(asyncTask, index);
+        if (thread) |th| {
+            task.* = th;
+        }
+    }
+    
+    for (tasks) |task| {
+        if (task) {
+            task.wait();
+        }
+    }
+}
