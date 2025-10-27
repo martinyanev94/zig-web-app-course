@@ -1,0 +1,7 @@
+const std = @import("std");
+
+pub fn main() !void {
+    // Print the current target architecture
+    const arch = @target.arch;
+    std.log.info("Target architecture: {}", .{arch});
+}
