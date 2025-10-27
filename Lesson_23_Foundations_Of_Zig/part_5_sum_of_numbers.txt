@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const x: i32 = 3;
+    const y: f64 = 4.5;
+    const z: f64 = @intToFloat(f64, x) + y; // explicit conversion
+
+    std.debug.print("Sum of {} and {} is: {}\n", .{x, y, z});
+}
