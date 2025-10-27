@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn build(b: *std.build.Builder) void {
+    const exe = b.addExecutable("hello", "src/main.zig");
+    exe.setTarget(b.getTarget());
+    exe.setBuildMode(b.getBuildMode());
+    exe.install();
+}
