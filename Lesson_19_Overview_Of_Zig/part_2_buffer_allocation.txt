@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    
+    const buffer_size = 128;
+    var buffer = try allocator.alloc(u8, buffer_size);
+
+    // Fill the buffer with data
+    for (i in 0..buffer_size) {
+        buffer[i] = @intCast(u8, i);
+    }
+
+    // Do something with the buffer...
+    std.debug.print("Buffer: {}\n", .{buffer});
+
+    // Free allocated memory
+    allocator.free(buffer);
+}
