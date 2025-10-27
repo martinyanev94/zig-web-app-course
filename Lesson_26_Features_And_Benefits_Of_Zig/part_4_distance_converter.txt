@@ -1,0 +1,13 @@
+const std = @import("std");
+
+const Meter = f64; // Type alias for a floating-point number
+
+fn convertToKilometers(m: Meter) Meter {
+    return m / 1000.0; // Convert to kilometers
+}
+
+pub fn main() void {
+    const distance_in_meters: Meter = 500.0;
+    const distance_in_kilometers = convertToKilometers(distance_in_meters);
+    std.debug.print("Distance in kilometers: {}\n", .{distance_in_kilometers});
+}
