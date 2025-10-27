@@ -1,0 +1,16 @@
+const std = @import("std");
+
+const Point = struct {
+    x: f64,
+    y: f64,
+
+    pub fn distance(self: Point) f64 {
+        return std.math.sqrt(self.x * self.x + self.y * self.y);
+    }
+};
+
+pub fn main() void {
+    const pointA = Point{ .x = 3.0, .y = 4.0 };
+    const dist = pointA.distance();
+    std.debug.print("Distance from origin: {}\n", .{dist});
+}
