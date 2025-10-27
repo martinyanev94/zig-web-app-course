@@ -1,0 +1,9 @@
+const std = @import("std");
+
+const Factorial = @import("std").math.factorial;
+
+pub fn main() void {
+    const num = 5;
+    const fact = Factorial(num);
+    std.debug.print("Factorial of {d} is {d}\n", .{num, fact});
+}
