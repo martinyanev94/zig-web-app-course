@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.page_allocator;
+    var buffer = try allocator.alloc(u8, 1024); // Allocate 1024 bytes
+    defer allocator.free(buffer); // Free the buffer once done
+
+    // Use the allocated memory...
+}
