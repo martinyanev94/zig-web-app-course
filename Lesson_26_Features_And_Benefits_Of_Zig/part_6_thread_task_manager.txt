@@ -1,0 +1,21 @@
+const std = @import("std");
+
+fn task(id: usize) void {
+    std.debug.print("Task {} is starting\n", .{id});
+    // Simulate work
+    std.time.sleep(1 * std.time.second);
+    std.debug.print("Task {} is complete\n", .{id});
+}
+
+pub fn main() void {
+    const thread_count = 5;
+    var threads: [thread_count]std.Thread = undefined;
+
+    for (threads) |*t, i| {
+        t.* = std.Thread.spawn(task, i);
+    }
+
+    for (threads) |t| {
+        t.wait(); // Wait for each thread to complete
+    }
+}
