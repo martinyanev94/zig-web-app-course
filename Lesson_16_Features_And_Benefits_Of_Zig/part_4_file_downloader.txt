@@ -1,0 +1,26 @@
+const std = @import("std");
+
+fn downloadFile(url: []const u8) !void {
+    // Simulate downloading a file
+    std.debug.print("Downloading file from: {}\n", .{url});
+    // You would include networking code here
+}
+
+pub fn main() void {
+    const urls = [_][]const u8{
+        "http://example.com/file1.txt",
+        "http://example.com/file2.txt",
+        "http://example.com/file3.txt",
+    };
+
+    const threads = std.Thread.spawnAll([]*const u8{
+        urls[0],
+        urls[1],
+        urls[2],
+    }, downloadFile);
+
+    // Wait for threads to complete
+    for (threads) |thread| {
+        thread.wait();
+    }
+}
