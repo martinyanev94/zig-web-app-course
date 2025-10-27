@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    var array: [5]u32 = .{1, 2, 3, 4, 5};
+    
+    for (i in 0..array.len) {
+        std.debug.print("Element {}: {}\n", .{i, array[i]});
+    }
+}
