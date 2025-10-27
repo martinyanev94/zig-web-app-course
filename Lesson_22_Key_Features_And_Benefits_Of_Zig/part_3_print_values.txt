@@ -1,0 +1,11 @@
+const std = @import("std");
+
+fn echo(comptime T: type, value: T) T {
+    return value;
+}
+
+pub fn main() void {
+    const intValue = echo(i32, 42);
+    const floatValue = echo(f32, 3.14);
+    std.debug.print("Integer: {d}, Float: {f}\n", .{intValue, floatValue});
+}
