@@ -1,0 +1,6 @@
+const std = @import("std");
+
+pub fn build(b: *std.Build) void {
+    const exe = b.addExecutable("myZigApp", "main.zig");
+    exe.install(); // This will install the executable as part of the build process
+}
