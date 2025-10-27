@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const args = std.process.args();
+    if (args.len < 2) {
+        return error("Please provide an argument.");
+    }
+    std.log.info("Argument provided: {}", .{args[1]});
+}
