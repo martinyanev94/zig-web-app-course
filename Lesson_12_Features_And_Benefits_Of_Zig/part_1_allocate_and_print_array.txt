@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    const array = try allocator.alloc(u32, 5);
+    
+    for (u32(i) = 0; i < 5; i += 1) {
+        array[i] = i * 10; 
+        std.debug.print("array[{}] = {}\n", .{i, array[i]});
+    }
+
+    allocator.free(array);
+}
