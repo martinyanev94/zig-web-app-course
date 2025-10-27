@@ -1,0 +1,14 @@
+const std = @import("std");
+const runtime = @runtime;
+
+pub fn main() void {
+    if (runtime.target.os == .windows) {
+        std.debug.print("Running on Windows\n", .{});
+    } else if (runtime.target.os == .linux) {
+        std.debug.print("Running on Linux\n", .{});
+    } else if (runtime.target.os == .macos) {
+        std.debug.print("Running on macOS\n", .{});
+    } else {
+        std.debug.print("Unknown platform\n", .{});
+    }
+}
