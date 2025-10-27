@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.page_allocator;
+
+    const entity_count = 100;
+    const entity_memory = allocator.alloc(Entity, entity_count) catch |err| {
+        std.debug.print("Memory allocation failed: {}\n", .{err});
+        return;
+    };
+
+    // Initialize entities
+    for (entity_memory) |*entity| {
+        entity.* = Entity{ .id = 1, .name = "Player" };
+    }
+
+    // Free the allocated memory
+    allocator.free(entity_memory);
+}
