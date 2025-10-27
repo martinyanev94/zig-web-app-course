@@ -1,0 +1,21 @@
+const std = @import("std");
+
+fn worker(id: i32, results: *[5]i32) void {
+    results[id] = id * id; // Each worker computes the square of its id
+}
+
+pub fn main() void {
+    var results: [5]i32 = .{0, 0, 0, 0, 0};
+    var threads: [5]std.Thread = undefined;
+
+    for (i) |id| {
+        threads[id] = std.Thread.spawn(worker, id, &results);
+    }
+
+    // Waiting for all threads to finish
+    for (i) |id| {
+        threads[id].join();
+    }
+
+    std.debug.print("Results: {:?}\n", .{results});
+}
