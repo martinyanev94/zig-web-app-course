@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    var buffer = try allocator.alloc(u8, 10);
+    
+    for (i in 0..10) {
+        buffer[i] = @intCast(u8, i);
+    }
+
+    std.debug.print("Buffer contents: {}\n", .{buffer});
+    allocator.free(buffer); // Manual management here
+}
