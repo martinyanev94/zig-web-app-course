@@ -1,0 +1,9 @@
+const std = @import("std");
+
+extern "c" {
+    fn printf(format: [*c]const u8, ...) c_void;
+}
+
+pub fn main() void {
+    printf("Hello from Zig with C!\n");
+}
