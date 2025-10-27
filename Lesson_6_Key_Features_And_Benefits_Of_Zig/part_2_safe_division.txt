@@ -1,0 +1,16 @@
+const std = @import("std");
+
+fn safe_divide(a: f64, b: f64) !f64 {
+    if (b == 0) {
+        return error.DivisionByZero;
+    }
+    return a / b;
+}
+
+pub fn main() !void {
+    const result = safe_divide(10.0, 0);
+    switch (result) {
+        error.DivisionByZero => std.log.warn("Cannot divide by zero."),
+        else => std.log.info("Result: {}", .{result}),
+    }
+}
