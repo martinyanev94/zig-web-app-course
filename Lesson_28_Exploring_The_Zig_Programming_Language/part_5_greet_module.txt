@@ -1,0 +1,11 @@
+// mymodule.zig
+pub fn greet() void {
+    const std = @import("std");
+    std.debug.print("Hello from mymodule!\n", .{});
+}
+const std = @import("std");
+const mymodule = @import("mymodule.zig");
+
+pub fn main() void {
+    mymodule.greet();
+}
