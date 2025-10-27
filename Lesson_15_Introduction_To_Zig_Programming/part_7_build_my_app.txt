@@ -1,0 +1,8 @@
+const Builder = @import("std").build;
+
+pub fn build(b: *Builder) void {
+    const target = b.target; // Detects target OS
+    const exe = b.addExecutable("my_app", "src/main.zig");
+    exe.setTarget(target);
+    exe.install();
+}
