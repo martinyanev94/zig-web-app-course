@@ -1,0 +1,18 @@
+const std = @import("std");
+
+const Employee = struct {
+    name: []const u8,
+    position: []const u8,
+
+    fn introduce(self: *Employee) void {
+        std.debug.print("Hi, I am {} and I work as {}.\n", .{self.name, self.position});
+    }
+};
+
+pub fn main() void {
+    var emp = Employee{
+        .name = "Bob",
+        .position = "Software Engineer",
+    };
+    emp.introduce();
+}
