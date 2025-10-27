@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn mayFail() !void {
+    return error.SomeError; // Simulating an error
+}
+
+pub fn main() void {
+    const result = mayFail();
+
+    switch (result) {
+        error.SomeError => std.debug.print("An error occurred.\n", .{}),
+        else => std.debug.print("Success!\n", .{}),
+    }
+}
