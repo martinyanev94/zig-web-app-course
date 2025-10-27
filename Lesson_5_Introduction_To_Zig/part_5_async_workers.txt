@@ -1,0 +1,19 @@
+const std = @import("std");
+
+fn worker(name: []const u8) void {
+    for (u32(i: 0); i < 5; i += 1) {
+        std.log.info("{}: working... {}", name, i);
+        std.time.sleep(1_000_000_000); // Sleep for 1 second
+    }
+}
+
+fn main() !void {
+    const allocator = std.heap.page_allocator;
+
+    var task1 = async worker("Task 1");
+    var task2 = async worker("Task 2");
+
+    // Wait for both tasks to complete
+    try task1.await();
+    try task2.await();
+}
