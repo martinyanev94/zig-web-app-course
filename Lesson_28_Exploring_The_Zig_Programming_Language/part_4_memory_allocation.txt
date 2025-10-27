@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    var data = try allocator.alloc(u8, 1024); // Allocate 1KB
+    defer allocator.free(data); // Ensure memory is freed
+    // Use 'data'...
+}
