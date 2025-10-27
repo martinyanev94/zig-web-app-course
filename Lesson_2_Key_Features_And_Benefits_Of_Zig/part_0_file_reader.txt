@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn readFile(filename: []const u8) ![]u8 {
+    const file = try std.fs.cwd().openFile(filename, .{});
+    defer file.close();
+
+    const contents = try file.readAllAlloc(std.heap.page_allocator);
+    return contents;
+}
+
+pub fn main() void {
+    const result = readFile("example.txt");
+    switch (result) {
+        error.FileNotFound => std.debug.print("File not found.\n", .{}),
+        error.OutOfMemory => std.debug.print("Memory allocation failed.\n", .{}),
+        else => |contents| std.debug.print("File contents: {}\n", .{contents}),
+    }
+}
