@@ -1,0 +1,12 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const numbers: [5]i32 = [5, 10, 15, 20, 25];
+    var sum: i32 = 0;
+
+    for (numbers) |num| {
+        sum += num;
+    }
+
+    std.log.info("Sum of numbers: {}", .{sum});
+}
