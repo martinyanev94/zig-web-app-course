@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn safeDivide(x: i32, y: i32) !i32 {
+    if (y == 0) {
+        return error.DivisionByZero;
+    }
+    return x / y;
+}
+
+pub fn main() !void {
+    const result = try safeDivide(10, 0);
+    try std.debug.print("Result: {}\n", .{result});
+}
