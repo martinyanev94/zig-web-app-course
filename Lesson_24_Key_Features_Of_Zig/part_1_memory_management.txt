@@ -1,0 +1,16 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.pageAllocator;
+    const size = 512; // Allocating 512 bytes of memory
+    var memory = allocator.alloc(u8, size) catch |err| {
+        std.debug.print("Memory allocation failed: {}\n", .{err});
+        return;
+    };
+
+    // Initialize memory to a specific value
+    std.mem.set(memory, 1);
+
+    // Free the allocated memory
+    allocator.free(memory);
+}
