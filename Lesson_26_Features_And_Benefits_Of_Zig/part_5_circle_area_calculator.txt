@@ -1,0 +1,12 @@
+// geometry.zig
+pub fn areaOfCircle(radius: f64) f64 {
+    return std.math.pi * radius * radius;
+}
+const std = @import("std");
+const geometry = @import("geometry.zig");
+
+pub fn main() void {
+    const radius = 5.0;
+    const area = geometry.areaOfCircle(radius);
+    std.debug.print("Area of the circle with radius {} is {}\n", .{radius, area});
+}
