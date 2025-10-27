@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn worker(chan: *std.AutoResetEvent) void {
+    std.debug.print("Worker started\n", .{});
+    // Simulating some work
+    std.time.sleep(1 * std.time.ns_per_s);
+    std.debug.print("Worker done\n", .{});
+    chan.release();
+}
+
+pub fn main() !void {
+    var chan: std.AutoResetEvent = std.AutoResetEvent.init();
+    std.spawn(worker, &chan);
+    chan.acquire(); // Wait for the worker to finish
+}
