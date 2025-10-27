@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    
+    const buffer: *u8 = try allocator.alloc(u8, 128);
+    defer allocator.free(buffer);
+
+    // Now we can use the buffer safely
+    buffer[0] = 'H';
+    buffer[1] = 'i';
+    std.debug.print("{s}\n", .{buffer});
+}
