@@ -1,0 +1,12 @@
+const std = @import("std");
+
+// A compile-time function that calculates factorial
+fn factorial(n: usize) usize {
+    if (n == 0) return 1;
+    return n * factorial(n - 1);
+}
+
+pub fn main() void {
+    const result = factorial(5); // Compute 5!
+    std.debug.print("Factorial of 5 is: {}\n", .{result});
+}
