@@ -1,0 +1,14 @@
+const Builder = @import("std").build.Builder;
+
+pub fn build(b: *Builder) void {
+    const target = b.default_target();
+    const mode = b.standardReleaseOptions();
+
+    const exe = b.addExecutable("my_app", "src/main.zig");
+    exe.setTarget(target);
+    exe.setBuildMode(mode);
+
+    // Add any dependencies or additional configuration here
+
+    b.installArtifact(exe);
+}
