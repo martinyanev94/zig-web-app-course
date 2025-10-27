@@ -1,0 +1,14 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const result = mayFailFunction() catch |err| {
+        std.debug.print("Error occurred: {}\n", .{err});
+        return err; // Explicit error handling
+    };
+    
+    std.debug.print("Result: {}\n", .{result});
+}
+
+fn mayFailFunction() !u32 {
+    return error.SomeError; // Simulating an error
+}
