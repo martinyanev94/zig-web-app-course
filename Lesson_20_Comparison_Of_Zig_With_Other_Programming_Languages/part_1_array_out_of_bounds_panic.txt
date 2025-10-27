@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    var buffer: [10]u8 = undefined;
+
+    // Accessing out of bounds in C would lead to undefined behavior
+    // In Zig, we can use a safe array access method
+    buffer[10] = 42; // This will trigger an array out of bounds panic in Zig
+    std.debug.print("Buffer[10] = {}\n", .{buffer[10]});
+}
