@@ -1,0 +1,20 @@
+const std = @import("std");
+
+fn doWork(comptime id: u32) void {
+    std.debug.print("Task {d} started.\n", .{id});
+    // Simulate work with a sleep
+    std.time.sleep(1 * std.time.second);
+    std.debug.print("Task {d} finished.\n", .{id});
+}
+
+pub fn main() void {
+    var tasks: [5]std.Thread = undefined;
+
+    for (tasks) |*task, i| {
+        task = std.Thread.spawn(doWork, i);
+    }
+
+    for (tasks) |*task| {
+        task.wait();
+    }
+}
