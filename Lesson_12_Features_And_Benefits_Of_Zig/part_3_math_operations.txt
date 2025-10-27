@@ -1,0 +1,16 @@
+// math_util.zig
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+pub fn subtract(a: i32, b: i32) i32 {
+    return a - b;
+}
+const std = @import("std");
+const math_util = @import("math_util.zig");
+
+pub fn main() void {
+    const sum = math_util.add(10, 5);
+    const difference = math_util.subtract(10, 5);
+    std.debug.print("Sum: {}, Difference: {}\n", .{sum, difference});
+}
