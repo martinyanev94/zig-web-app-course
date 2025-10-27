@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn fibonacci_iter(n: u32) u32 {
+    var a: u32 = 0;
+    var b: u32 = 1;
+    for (i in 0..n) {
+        const temp = a;
+        a = b;
+        b = temp + b;
+    }
+    return a;
+}
+
+pub fn main() void {
+    const n = 10;
+    const result = fibonacci_iter(n);
+    std.debug.print("Fibonacci({}) = {}\n", .{n, result});
+}
