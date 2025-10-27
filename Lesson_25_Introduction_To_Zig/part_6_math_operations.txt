@@ -1,0 +1,11 @@
+// math.zig
+fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+const std = @import("std");
+const math = @import("math.zig");
+
+pub fn main() void {
+    const result = math.add(5, 7);
+    std.debug.print("The result of the addition is: {}\n", .{result});
+}
