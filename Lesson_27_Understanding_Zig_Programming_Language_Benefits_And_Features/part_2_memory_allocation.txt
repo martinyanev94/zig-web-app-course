@@ -1,0 +1,15 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+    const size = 1024;
+
+    const ptr = allocator.create(u8, size) catch unreachable;
+    defer allocator.destroy(ptr);
+
+    for (ptr) |*element| {
+        element.* = 0; // Initialize to zero
+    }
+
+    std.debug.print("Memory allocated and initialized: {}\n", .{size});
+}
