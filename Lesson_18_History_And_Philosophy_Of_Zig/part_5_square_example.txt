@@ -1,0 +1,8 @@
+const std = @import("std");
+
+extern fn c_square(x: i32) i32;
+
+pub fn main() void {
+    const result = c_square(7);
+    std.debug.print("The square of 7 is: {}\n", .{result});
+}
