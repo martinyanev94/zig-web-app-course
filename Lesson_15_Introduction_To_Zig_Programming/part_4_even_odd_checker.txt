@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    const number: i32 = 5;
+    
+    if (number % 2 == 0) {
+        std.debug.print("{} is even\n", .{number});
+    } else {
+        std.debug.print("{} is odd\n", .{number});
+    }
+}
