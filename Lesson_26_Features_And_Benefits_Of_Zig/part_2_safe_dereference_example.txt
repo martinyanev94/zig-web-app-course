@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn safeDereference(ptr: ?*u8) !u8 {
+    if (ptr) |p| {
+        return p.*; // Safe to dereference
+    } else {
+        return error.NullPointerDereference;
+    }
+}
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    var buffer: ?*u8 = null; // Uninitialized
+
+    // Attempting to dereference null
+    const value = try safeDereference(buffer);
+    std.debug.print("Value: {}\n", .{value});
+}
