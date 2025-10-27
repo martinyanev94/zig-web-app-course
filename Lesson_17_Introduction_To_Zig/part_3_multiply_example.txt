@@ -1,0 +1,10 @@
+pub fn multiply(a: i32, b: i32) i32 {
+    return a * b;
+}
+const std = @import("std");
+const math = @import("math.zig"); // Importing the math module
+
+pub fn main() void {
+    const product = math.multiply(4, 5);
+    std.debug.print("The product is {}\n", .{product});
+}
