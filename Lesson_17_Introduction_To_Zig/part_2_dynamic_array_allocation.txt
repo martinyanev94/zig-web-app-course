@@ -1,0 +1,18 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    const size: usize = 4 * std.mem.sizeOf(i32);
+    const ptr = try allocator.alloc(i32, 4);
+
+    ptr[0] = 10;
+    ptr[1] = 20;
+    ptr[2] = 30;
+    ptr[3] = 40;
+
+    for (ptr) |value| {
+        std.debug.print("{}\n", .{value});
+    }
+
+    allocator.free(ptr);
+}
