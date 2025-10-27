@@ -1,0 +1,10 @@
+export fn add(x: i32, y: i32) i32 {
+    return x + y;
+}
+const std = @import("std");
+const math = @import("math.zig");
+
+pub fn main() void {
+    const result = math.add(10, 20);
+    std.debug.print("Sum is: {}\n", .{result});
+}
