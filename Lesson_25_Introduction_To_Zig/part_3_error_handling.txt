@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn mayFail() !void {
+    return error.SomeError;
+}
+
+pub fn main() !void {
+    if (mayFail()) |err| {
+        std.debug.print("Error encountered: {}\n", .{err});
+        return err;
+    }
+    std.debug.print("No errors encountered!\n", .{});
+}
