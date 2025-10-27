@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn getNullableValue(condition: bool) ?u32 {
+    if (condition) {
+        return 42; 
+    } else {
+        return null; 
+    }
+}
+
+pub fn main() void {
+    const value = getNullableValue(true);
+    if (value) |v| {
+        std.debug.print("Received value: {}\n", .{v});
+    } else {
+        std.debug.print("No value received!\n", .{});
+    }
+}
