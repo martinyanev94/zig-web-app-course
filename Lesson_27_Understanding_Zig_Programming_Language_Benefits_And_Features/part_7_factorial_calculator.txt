@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn factorial(n: u32) u32 {
+    var result: u32 = 1;
+    for (n) |i| {
+        result *= i + 1;
+    }
+    return result;
+}
+
+pub fn main() void {
+    const num = 10;
+    const result = factorial(num);
+    std.debug.print("Factorial of {} is: {}\n", .{num, result});
+}
