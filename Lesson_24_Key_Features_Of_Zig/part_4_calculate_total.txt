@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const intValue: i32 = 10;
+    const floatValue: f64 = 5.0;
+    const total: f64 = @intToFloat(f64, intValue) + floatValue;
+
+    std.debug.print("The total is: {}\n", .{total});
+}
