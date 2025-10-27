@@ -1,0 +1,25 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+
+    const channel = allocator.createChannel(i32, 10) catch |err| {
+        std.debug.print("Failed to create channel: {}\n", .{err});
+        return;
+    };
+
+    // Spawning a new goroutine
+    std.Thread.spawn(.{.name = "worker", .fn = worker, .args = &channel});
+
+    // Sending data to the channel
+    channel.send(42);
+    const value = channel.recv();
+
+    std.debug.print("Received value: {}\n", .{value});
+}
+
+// Worker function to receive from the channel
+fn worker(args: *Channel) !void {
+    const value = args.recv();
+    std.debug.print("Worker received: {}\n", .{value});
+}
