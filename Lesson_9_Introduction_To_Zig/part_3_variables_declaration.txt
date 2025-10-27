@@ -1,0 +1,2 @@
+var number: i32 = 42;
+var name = "Zig";
