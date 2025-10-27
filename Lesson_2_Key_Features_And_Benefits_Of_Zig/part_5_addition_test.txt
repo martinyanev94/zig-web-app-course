@@ -1,0 +1,4 @@
+test "addition" {
+    const result = 2 + 3;
+    try std.testing.expect(result == 5);
+}
