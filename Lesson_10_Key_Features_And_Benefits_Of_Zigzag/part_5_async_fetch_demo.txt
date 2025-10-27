@@ -1,0 +1,13 @@
+const std = @import("std");
+
+async fn fetchData() !void {
+    // Simulating a network fetch
+    try std.time.sleep(2_000_000_000); // 2 seconds
+    std.debug.print("Data fetched!\n", .{});
+}
+
+pub fn main() !void {
+    const task = fetchData();
+    // You can do other work here while waiting for the fetch
+    try task;
+}
