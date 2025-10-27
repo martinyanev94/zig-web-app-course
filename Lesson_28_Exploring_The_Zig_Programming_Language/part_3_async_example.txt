@@ -1,0 +1,11 @@
+const std = @import("std");
+
+fn asyncTask() !void {
+    // Simulating a non-blocking task
+    std.debug.print("Task is running asynchronously...\n", .{});
+}
+
+pub fn main() !void {
+    try asyncTask();
+    std.debug.print("Main function continues running...\n", .{});
+}
