@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+    const size = @intToPtr(u32, 32); // Allocate 32 bytes
+    const ptr = allocator.alloc(u8, size) catch |err| {
+        std.debug.print("Allocation failed: {}\n", .{err});
+        return;
+    };
+
+    defer allocator.free(ptr); // Ensure memory is freed
+    std.debug.print("Memory allocated at {}\n", .{ptr});
+}
