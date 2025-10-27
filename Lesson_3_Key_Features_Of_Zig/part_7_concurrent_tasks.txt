@@ -1,0 +1,19 @@
+const std = @import("std");
+
+fn concurrent_task(id: usize) void {
+    std.debug.print("Executing task {}...\n", .{id});
+}
+
+pub fn main() void {
+    const tasks = 4;
+    var threads = [_]std.Thread(tasks) {};
+    for (id, idx) in threads {
+        threads[idx] = std.Thread.spawn(concurrent_task, id) catch |err| {
+            std.debug.print("Error creating thread {}: {}\n", .{id, err});
+            return;
+        };
+    }
+    for (thread in threads) |t| {
+        t.join();
+    }
+}
