@@ -1,0 +1,10 @@
+pub fn add(a: u32, b: u32) u32 {
+    return a + b;
+}
+const std = @import("std");
+const add = @import("add.zig");
+
+pub fn main() void {
+    const result = add.add(5, 10);
+    std.debug.print("The sum is: {}\n", .{result});
+}
