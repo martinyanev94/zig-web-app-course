@@ -1,0 +1,18 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+
+    const memory = allocator.alloc(u8, 100) catch |err| {
+        std.debug.print("Failed to allocate memory: {}\n", .{err});
+        return;
+    };
+
+    // Use the allocated memory
+    for (i32(0)..100) |i| {
+        memory[i] = @intCast(u8, i);
+    }
+
+    // Free the allocated memory
+    allocator.free(memory);
+}
