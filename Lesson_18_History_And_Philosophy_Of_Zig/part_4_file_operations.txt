@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const file = try std.fs.cwd().openFile("example.txt", .{ .read = true, .write = true, .create = true });
+    defer file.close();
+
+    try file.writeAll("Hello, Zig!\n");
+    const contents = try file.readToEndAlloc(std.heap.page_allocator);
+    std.debug.print("File contents: {}\n", .{contents});
+}
