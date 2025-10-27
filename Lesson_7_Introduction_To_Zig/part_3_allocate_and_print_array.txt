@@ -1,0 +1,16 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.pageAllocator; 
+    const array = try allocator.alloc(u32, 100); // Allocate space for 100 u32 integers
+
+    for (i in 0..100) {
+        array[i] = i * 2; // Populate the array
+    }
+
+    for (i in 0..100) {
+        std.debug.print("{} ", .{array[i]}); // Print the elements
+    }
+
+    allocator.free(array); // Free the allocated memory
+}
