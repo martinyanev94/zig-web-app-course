@@ -1,0 +1,7 @@
+const std = @import("std");
+const c = @cImport(@cInclude("math.h"));
+
+pub fn main() !void {
+    const result = c.sqrt(25.0);
+    std.log.info("The square root of 25 is: {}", .{result});
+}
