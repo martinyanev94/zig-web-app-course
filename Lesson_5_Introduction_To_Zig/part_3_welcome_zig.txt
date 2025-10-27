@@ -1,0 +1,8 @@
+const std = @import("std");
+
+fn main() !void {
+    const name: []const u8 = "Zig";
+    const version: u32 = 0;
+
+    std.log.info("Welcome to {}, version: {}", .{name, version});
+}
