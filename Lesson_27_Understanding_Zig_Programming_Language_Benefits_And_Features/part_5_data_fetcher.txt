@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn fetchData() !void {
+    // Simulated asynchronous data fetching
+    std.debug.print("Fetching data...\n", .{});
+}
+
+pub fn main() void {
+    const result = fetchData() catch |err| {
+        std.debug.print("An error occurred: {}\n", .{err});
+        return;
+    };
+
+    std.debug.print("Data fetched successfully!\n", .{});
+}
