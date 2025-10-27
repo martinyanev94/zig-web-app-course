@@ -1,0 +1,14 @@
+const std = @import("std");
+
+async fn task1() void {
+    std.debug.print("Task 1 is running\n", .{});
+}
+
+async fn task2() void {
+    std.debug.print("Task 2 is running\n", .{});
+}
+
+pub fn main() void {
+    const _ = async task1();
+    const _ = async task2();
+}
