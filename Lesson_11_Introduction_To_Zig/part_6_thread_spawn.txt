@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn task() void {
+    std.debug.print("Executing task!\n", .{});
+}
+
+pub fn main() !void {
+    const thread = try std.Thread.spawn(task);
+    try thread.wait();
+}
