@@ -1,0 +1,16 @@
+// math_utils.zig
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+pub fn multiply(a: i32, b: i32) i32 {
+    return a * b;
+}
+const std = @import("std");
+const math_utils = @import("math_utils.zig");
+
+pub fn main() void {
+    const sum = math_utils.add(3, 4);
+    const product = math_utils.multiply(3, 4);
+    std.debug.print("Sum: {}, Product: {}\n", .{sum, product});
+}
