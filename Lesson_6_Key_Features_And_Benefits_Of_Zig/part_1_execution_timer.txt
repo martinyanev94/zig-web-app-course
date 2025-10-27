@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn slow_function() void {
+    // Simulates a slow operation
+    for (var i: usize = 0; i < 1_000_000_000; i += 1) {} 
+}
+
+pub fn main() !void {
+    const start_time = std.time.milliTimestamp();
+    slow_function();
+    const end_time = std.time.milliTimestamp();
+    const duration = end_time - start_time;
+    std.log.info("Execution time: {} ms", .{duration});
+}
