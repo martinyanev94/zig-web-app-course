@@ -1,0 +1,19 @@
+const std = @import("std");
+
+fn createArray(size: usize) ![*]u32 {
+    var allocator = std.heap.page_allocator;
+    var array = try allocator.alloc(u32, size);
+    for (array) |*elem, idx| {
+        elem.* = @intCast(u32, idx);
+    }
+    return array;
+}
+
+fn main() !void {
+    const array = try createArray(10);
+    defer std.heap.page_allocator.free(array);
+
+    for (array) |elem| {
+        std.log.info("Element: {}", .{elem});
+    }
+}
