@@ -1,0 +1,12 @@
+fn is_even(num: i32) bool {
+    return num % 2 == 0;
+}
+
+pub fn main() void {
+    const number = 42;
+    if (is_even(number)) {
+        std.debug.print("{} is even.\n", .{number});
+    } else {
+        std.debug.print("{} is odd.\n", .{number});
+    }
+}
