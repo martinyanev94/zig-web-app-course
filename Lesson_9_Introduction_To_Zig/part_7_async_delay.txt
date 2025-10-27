@@ -1,0 +1,11 @@
+const std = @import("std");
+
+async fn delay(seconds: u32) !void {
+    const time = std.time.ns_per_second * seconds;
+    try std.time.sleep(time);
+}
+pub fn main() !void {
+    const delayed_task = delay(2);
+    // Other operations can be performed concurrently here
+    try delayed_task;
+}
