@@ -1,0 +1,5 @@
+pub fn main() void {
+    for (i: u32 = 0; i < 5; i += 1) {
+        std.debug.print("Iteration: {}\n", .{i});
+    }
+}
